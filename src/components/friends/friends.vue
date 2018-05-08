@@ -14,8 +14,8 @@
         <q-item v-for="friend in friends" :key="friend.id">
           <q-item-main>
             <q-item-tile label>{{ friend.name }}
-              <q-btn color="secondary" class="on-right" @click="">Chat</q-btn>
-              <q-btn color="secondary" class="on-right" @click="">Perfil</q-btn>
+              <q-btn color="secondary" class="on-right" @click="chat">Chat</q-btn>
+              <q-btn color="secondary" class="on-right" @click="profile">Perfil</q-btn>
             </q-item-tile>
           </q-item-main>
         </q-item>
