@@ -2,9 +2,9 @@
   <div class="layout-view layout-padding">
     <div class="branding">
       <div class="splash"></div>
-      <div class="tagline">Quasar Starter</div>
+      <div class="tagline">Proyecto H</div>
       <hr>
-      <p>Proyecto H: Frontend Quasar (Vue.js) y backend Laravel</p>
+      <p>Frontend Quasar (Vue.js) y backend Laravel</p>
     </div>
     <div class="row no-gutter">
       <q-btn color="primary" class="full-width" @click="goTo('login')">

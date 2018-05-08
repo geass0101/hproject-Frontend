@@ -2,7 +2,7 @@
   <div>
     <div class="layout-view layout-padding">
       <div class="text-center">
-          <h1>Buscar</h1>
+          <h3>Buscar</h3>
             <q-search v-model="srch" v-on:change="search" />
       </div>
 

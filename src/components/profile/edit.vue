@@ -2,13 +2,12 @@
   <div>
     <div class="layout-view">
       <div class="text-center">
-        <h1>Perfil </h1>
+        <h3>Perfil </h3>
       </div>
       <div class="layout-view layout-padding">
         <q-input v-model="user.name" stack-label="Nombre público" />
         <q-input v-model="user.profile" stack-label="Descripcion de perfil" />
         <q-input v-model="user.city" stack-label="Ciudad" />
-        <q-input v-model="user.country" stack-label="País" />
         <q-btn color="secondary" class="on-right" @click="editProfile">Realizar Cambios</q-btn>
 
       </div>

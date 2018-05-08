@@ -21,6 +21,10 @@
           <q-item-side icon="dashboard" />
         <q-item-main label="Línea de tiempo" />
         </q-side-link>
+        <q-side-link item to="/create">
+          <q-item-side icon="create" />
+          <q-item-main label="Crear Post" />
+        </q-side-link>
         <q-side-link item to="/profile">
           <q-item-side icon="account_circle" />
           <q-item-main label="Perfil" />

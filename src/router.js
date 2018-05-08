@@ -31,10 +31,12 @@ export default new VueRouter({
       component: load('layouts/menu'),
       beforeEnter: checkAuth,
       children: [
+        { path: 'timeline', component: load('post/timeline'), meta: { title: 'Timeline' } },
+        { path: 'create', component: load('post/create'), meta: { title: 'Crear Post' } },
         { path: 'profile', component: load('profile/edit'), meta: { title: 'Profile' } },
-        { path: 'jokes', component: load('jokes/jokes'), meta: { title: 'Jokes' } },
-        { path: 'friends', component: load('friends/friends'), meta: { title: 'Friends' } },
-        { path: 'search', component: load('search/search'), meta: { title: 'Search' } }
+        { path: 'friends', component: load('friends/friends'), meta: { title: 'Amigos' } },
+        { path: 'friends/requests', component: load('friends/requests'), meta: { title: 'Solicitudes de amistad' } },
+        { path: 'search', component: load('search/search'), meta: { title: 'Buscar' } }
       ]
     },
     { path: '*', component: load('error404') } // Not found
