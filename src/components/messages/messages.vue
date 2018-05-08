@@ -24,9 +24,9 @@
     data () {
       return {
         messages: [],
-        body: "",
-        ori: "",
-        des: ""
+        body: '',
+        ori: '',
+        des: '$route.params.id'
       }
     },
 
@@ -36,7 +36,7 @@
 
     methods: {
       getMessages () {
-        axios.get('messages',{"des":this.des,"body":this.body})
+        axios.get('messages', {'des': this.des, 'body': this.body})
           .then((response) => {
             this.posts = response.data
           }, () => {
@@ -44,16 +44,15 @@
           })
       },
       createMessage () {
-          axios.post()
-            .then((response) => {
-                this.getMessages()
-            }, () => {
-                Toast.create.negative('Fallo al enviar mensaje')
-            })
-        
+        axios.post()
+          .then((response) => {
+            this.getMessages()
+          }, () => {
+            Toast.create.negative('Fallo al enviar mensaje')
+          })
       }
     },
 
-    components: {'q-menu': menu, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QCard, QCardTitle, QCardMain, QCardSeparator, QPullToRefresh}
+    components: {'q-menu': menu, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QChatMessage}
   }
 </script>
