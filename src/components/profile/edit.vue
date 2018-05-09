@@ -32,7 +32,8 @@
     },
 
     mounted () {
-      this.fetchProfile()
+      this.fetchProfile(),
+      this.setLocation()
     },
 
     methods: {
@@ -55,6 +56,22 @@
           }, () => {
             Toast.create.negative('Fallo al actualizar el perfil')
           })
+      },
+      setLocation () {
+        if(navigation.geolocation){
+          navigator.geolocation.getCurrentPosition(
+             axios.post('location', {
+          lat: position.coords.latitude,
+          long: position.coords.longitude,        
+        })
+          .then(() => {
+            Toast.create.positive('Tomada geolocalizacion')
+          }, () => {
+            Toast.create.negative('Fallo al detectar posicion geográfica')
+          })
+          )
+        }
+        
       }
     },
 
