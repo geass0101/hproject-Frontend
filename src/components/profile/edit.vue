@@ -2,12 +2,15 @@
   <div>
     <div class="layout-view">
       <div class="text-center">
-        <h3>Perfil </h3>
+        <h3>Edición de Perfil</h3>
       </div>
       <div class="layout-view layout-padding">
         <q-input v-model="user.name" stack-label="Nombre público" />
         <q-input v-model="user.profile" stack-label="Descripcion de perfil" />
         <q-input v-model="user.city" stack-label="Ciudad" />
+        <q-input v-model="user.country" stack-label="País" />
+        <q-input v-model="user.instrument" stack-label="Instrumentos" />
+        <q-input v-model="user.genere" stack-label="Géneros" />
         <q-btn color="secondary" class="on-right" @click="editProfile">Realizar Cambios</q-btn>
 
       </div>

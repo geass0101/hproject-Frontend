@@ -33,7 +33,8 @@ export default new VueRouter({
       children: [
         { path: 'timeline', component: load('post/timeline'), meta: { title: 'Timeline' } },
         { path: 'create', component: load('post/create'), meta: { title: 'Crear Post' } },
-        { path: 'profile', component: load('profile/edit'), meta: { title: 'Profile' } },
+        { path: 'profile', component: load('profile/edit'), meta: { title: 'Perfil' } },
+        { path: 'profile/:id', component: load('profile/profile'), meta: { title: 'Visitar perfil' } },
         { path: 'friends', component: load('friends/friends'), meta: { title: 'Amigos' } },
         { path: 'friends/requests', component: load('friends/requests'), meta: { title: 'Solicitudes de amistad' } },
         { path: 'messages/:id', component: load('messages/messages'), meta: { title: 'Chat' } },

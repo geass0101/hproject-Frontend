@@ -11,8 +11,8 @@
       <q-item v-for="user in results" :key="user.id">
         <q-item-main>
           <q-item-tile label>{{ user.name }}
-            <q-btn color="secondary" class="on-right" @click="">Chat</q-btn>
-            <q-btn color="secondary" class="on-right" @click="">Perfil</q-btn>
+            <q-btn color="secondary" class="on-right" @click="$router.push('/messages/'+this.user.id)">Chat</q-btn>
+            <q-btn color="secondary" class="on-right" @click="$router.push('/profile/'+this.user.id)">Perfil</q-btn>
           </q-item-tile>
         </q-item-main>
       </q-item>
@@ -31,7 +31,7 @@ export default{
   data () {
     return {
       srch: '',
-      results: []
+      results: [],
     }
   },
 

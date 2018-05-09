@@ -8,7 +8,7 @@
        <q-chat-message v-for="message in messages" :key=message.id
         name=message.ori
         :text=message.body
-        v-if="message.ori==this.ori" :v-bind="sent"
+        v-if="message.ori!=this.des" :v-bind="sent"
         />
       </div>
     </div>
