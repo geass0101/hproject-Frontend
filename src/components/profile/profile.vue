@@ -34,33 +34,62 @@
 </template>
 
 <script>
-  import { Toast, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QCard, QCardMedia, QCardTitle, QCardMain, QCardSeparator, QCardActions } from 'quasar'
-  import axios from 'axios'
-  import menu from '../layouts/menu'
+import {
+  Toast,
+  QBtn,
+  QToolbar,
+  QIcon,
+  QToolbarTitle,
+  QField,
+  QInput,
+  QCard,
+  QCardMedia,
+  QCardTitle,
+  QCardMain,
+  QCardSeparator,
+  QCardActions
+} from "quasar";
+import axios from "axios";
+import menu from "../layouts/menu";
 
-  export default{
-    data () {
-      return {
-        user: {
+export default {
+  data() {
+    return {
+      user: {}
+    };
+  },
+
+  mounted() {
+    this.getProfile();
+  },
+
+  methods: {
+    getProfile() {
+      axios.get("getprofile", { id: $route.params.id }).then(
+        response => {
+          this.user = response.data.users[0];
+        },
+        () => {
+          Toast.create.negative("Fallo al recuperar el perfil");
         }
-      }
-    },
+      );
+    }
+  },
 
-    mounted () {
-      this.getProfile()
-    },
-
-    methods: {
-      getProfile () {
-        axios.get('getprofile',{'id':$route.params.id})
-          .then((response) => {
-            this.user = response.data.users[0]
-          }, () => {
-            Toast.create.negative('Fallo al recuperar el perfil')
-          })
-      }
-    },
-
-    components: { 'q-menu': menu, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QCard, QCardMedia, QCardTitle, QCardMain, QCardSeparator, QCardActions }
+  components: {
+    "q-menu": menu,
+    QBtn,
+    QToolbar,
+    QIcon,
+    QToolbarTitle,
+    QField,
+    QInput,
+    QCard,
+    QCardMedia,
+    QCardTitle,
+    QCardMain,
+    QCardSeparator,
+    QCardActions
   }
+};
 </script>
