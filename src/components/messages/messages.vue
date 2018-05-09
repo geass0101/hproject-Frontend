@@ -16,43 +16,74 @@
 </template>
 
 <script>
-  import {Toast, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QChatMessage} from 'quasar'
-  import axios from 'axios'
-  import menu from '../layouts/menu'
+import {
+  Toast,
+  QBtn,
+  QToolbar,
+  QIcon,
+  QToolbarTitle,
+  QField,
+  QInput,
+  QChatMessage
+} from "quasar";
+import axios from "axios";
+import menu from "../layouts/menu";
 
-  export default{
-    data () {
-      return {
-        messages: [],
-        body: '',
-        ori: '',
-        des: '$route.params.id'
-      }
+export default {
+  data() {
+    return {
+      messages: [],
+      body: "",
+      ori: "",
+      des: "$route.params.id"
+    };
+  },
+
+  mounted() {
+    this.mount();
+  },
+
+  methods: {
+    mount() {
+      this.getMessages();
+      setInterval(
+        function() {
+          this.getMessages();
+        }.bind(this),
+        3000
+      );
     },
-
-    mounted () {
-      this.getMessages()
+    getMessages() {
+      axios.get("messages", { des: this.des, body: this.body }).then(
+        response => {
+          this.posts = response.data;
+        },
+        () => {
+          Toast.create.negative("Fallo al recuperar mensajes");
+        }
+      );
     },
+    createMessage() {
+      axios.post().then(
+        response => {
+          this.getMessages();
+        },
+        () => {
+          Toast.create.negative("Fallo al enviar mensaje");
+        }
+      );
+    }
+  },
 
-    methods: {
-      getMessages () {
-        axios.get('messages', {'des': this.des, 'body': this.body})
-          .then((response) => {
-            this.posts = response.data
-          }, () => {
-            Toast.create.negative('Fallo al recuperar mensajes')
-          })
-      },
-      createMessage () {
-        axios.post()
-          .then((response) => {
-            this.getMessages()
-          }, () => {
-            Toast.create.negative('Fallo al enviar mensaje')
-          })
-      }
-    },
-
-    components: {'q-menu': menu, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QChatMessage}
+  components: {
+    "q-menu": menu,
+    QBtn,
+    QToolbar,
+    QIcon,
+    QToolbarTitle,
+    QField,
+    QInput,
+    QChatMessage
   }
+};
 </script>
