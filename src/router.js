@@ -38,7 +38,8 @@ export default new VueRouter({
         { path: 'friends', component: load('friends/friends'), meta: { title: 'Amigos' } },
         { path: 'friends/requests', component: load('friends/requests'), meta: { title: 'Solicitudes de amistad' } },
         { path: 'messages/:id', component: load('messages/messages'), meta: { title: 'Chat' } },
-        { path: 'search', component: load('search/search'), meta: { title: 'Buscar' } }
+        { path: 'search', component: load('search/search'), meta: { title: 'Buscar' } },
+        { path: 'geosearch', component: load('search/geosearch'), meta: { title: 'Búsqueda geográfica' } }
       ]
     },
     { path: '*', component: load('error404') } // Not found
