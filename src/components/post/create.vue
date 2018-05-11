@@ -26,29 +26,59 @@
 </template>
 
 <script>
-  import {Toast, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QCard, QCardTitle, QCardMain, QCardSeparator, QPullToRefresh, QOptionGroup} from 'quasar'
-  import axios from 'axios'
-  import menu from '../layouts/menu'
+import {
+  Toast,
+  QBtn,
+  QToolbar,
+  QIcon,
+  QToolbarTitle,
+  QField,
+  QInput,
+  QCard,
+  QCardTitle,
+  QCardMain,
+  QCardSeparator,
+  QPullToRefresh,
+  QOptionGroup
+} from "quasar";
+import axios from "axios";
+import menu from "../layouts/menu";
 
-  export default{
-    data () {
-      return {
-        body: '',
-        type: ''
-      }
-    },
+export default {
+  data() {
+    return {
+      body: "",
+      type: ""
+    };
+  },
 
-    methods: {
-      create () {
-        axios.post('create', {body: this.body, type: this.type})
-          .then((response) => {
-            Toast.create.positive('Post creado')
-          }, () => {
-            Toast.create.negative('Fallo al crear post')
-          })
-      }
-    },
+  methods: {
+    create() {
+      axios.post("create", { body: this.body, type: this.type }).then(
+        response => {
+          Toast.create.positive("Post creado");
+        },
+        () => {
+          Toast.create.negative("Fallo al crear post");
+        }
+      );
+    }
+  },
 
-    components: {'q-menu': menu, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QCard, QCardTitle, QCardMain, QCardSeparator, QPullToRefresh, QOptionGroup}
+  components: {
+    "q-menu": menu,
+    QBtn,
+    QToolbar,
+    QIcon,
+    QToolbarTitle,
+    QField,
+    QInput,
+    QCard,
+    QCardTitle,
+    QCardMain,
+    QCardSeparator,
+    QPullToRefresh,
+    QOptionGroup
   }
+};
 </script>

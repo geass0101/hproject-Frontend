@@ -57,34 +57,61 @@
 <style></style>
 
 <script>
-  import { GoBack, QLayout, QToolbar, QBtn, QIcon, QToolbarTitle, QList, QSideLink, QItemSide, QItemMain, QItem, QItemTile, QListHeader } from 'quasar'
-  import Auth from '../../auth'
+import {
+  GoBack,
+  QLayout,
+  QToolbar,
+  QBtn,
+  QIcon,
+  QToolbarTitle,
+  QList,
+  QSideLink,
+  QItemSide,
+  QItemMain,
+  QItem,
+  QItemTile,
+  QListHeader
+} from "quasar";
+import Auth from "../../auth";
 
-  export default{
-    data () {
-      return {
-        title: ''
-      }
-    },
+export default {
+  data() {
+    return {
+      title: ""
+    };
+  },
 
-    watch: {
-      '$route' () {
-        this.title = this.$route.meta.title
-      }
-    },
+  watch: {
+    $route() {
+      this.title = this.$route.meta.title;
+    }
+  },
 
-    mounted () {
-      this.title = this.$route.meta.title
-    },
+  mounted() {
+    this.title = this.$route.meta.title;
+  },
 
-    methods: {
-      logout () {
-        Auth.logout()
-      }
-    },
+  methods: {
+    logout() {
+      Auth.logout();
+    }
+  },
 
-    components: { QLayout, QToolbar, QBtn, QIcon, QToolbarTitle, QList, QSideLink, QItemSide, QItemMain, QItem, QItemTile, QListHeader },
+  components: {
+    QLayout,
+    QToolbar,
+    QBtn,
+    QIcon,
+    QToolbarTitle,
+    QList,
+    QSideLink,
+    QItemSide,
+    QItemMain,
+    QItem,
+    QItemTile,
+    QListHeader
+  },
 
-    directives: { GoBack }
-  }
+  directives: { GoBack }
+};
 </script>

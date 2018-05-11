@@ -23,36 +23,64 @@
 </template>
 
 <script>
-  import {Toast, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QCard, QCardTitle, QCardMain, QCardSeparator, QPullToRefresh} from 'quasar'
-  import axios from 'axios'
-  import menu from '../layouts/menu'
+import {
+  Toast,
+  QBtn,
+  QToolbar,
+  QIcon,
+  QToolbarTitle,
+  QField,
+  QInput,
+  QCard,
+  QCardTitle,
+  QCardMain,
+  QCardSeparator,
+  QPullToRefresh
+} from "quasar";
+import axios from "axios";
+import menu from "../layouts/menu";
 
-  export default{
-    data () {
-      return {
-        posts: []
-      }
+export default {
+  data() {
+    return {
+      posts: []
+    };
+  },
+
+  mounted() {
+    this.fetchPosts();
+  },
+
+  methods: {
+    fetchPosts() {
+      axios.get("posts").then(
+        response => {
+          this.posts = response.data;
+        },
+        () => {
+          Toast.create.negative("Fallo al recuperar posts");
+        }
+      );
     },
+    refreshPosts(done) {
+      this.fetchPosts();
+      done();
+    }
+  },
 
-    mounted () {
-      this.fetchPosts()
-    },
-
-    methods: {
-      fetchPosts () {
-        axios.get('posts')
-          .then((response) => {
-            this.posts = response.data
-          }, () => {
-            Toast.create.negative('Fallo al recuperar posts')
-          })
-      },
-      refreshPosts (done) {
-        this.fetchPosts()
-        done()
-      }
-    },
-
-    components: {'q-menu': menu, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QCard, QCardTitle, QCardMain, QCardSeparator, QPullToRefresh}
+  components: {
+    "q-menu": menu,
+    QBtn,
+    QToolbar,
+    QIcon,
+    QToolbarTitle,
+    QField,
+    QInput,
+    QCard,
+    QCardTitle,
+    QCardMain,
+    QCardSeparator,
+    QPullToRefresh
   }
+};
 </script>

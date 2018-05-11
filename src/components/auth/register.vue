@@ -24,28 +24,36 @@
 </template>
 
 <script>
-  import { GoBack, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput } from 'quasar'
-  import auth from '../../auth'
+import {
+  GoBack,
+  QBtn,
+  QToolbar,
+  QIcon,
+  QToolbarTitle,
+  QField,
+  QInput
+} from "quasar";
+import auth from "../../auth";
 
-  export default {
-    data () {
-      return {
-        credentials: {
-          name: '',
-          email: '',
-          password: ''
-        }
+export default {
+  data() {
+    return {
+      credentials: {
+        name: "",
+        email: "",
+        password: ""
       }
-    },
+    };
+  },
 
-    methods: {
-      submit () {
-        auth.signup(this.credentials, 'profile')
-      }
-    },
+  methods: {
+    submit() {
+      auth.signup(this.credentials, "profile");
+    }
+  },
 
-    components: { QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput },
+  components: { QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput },
 
-    directives: { GoBack }
-  }
+  directives: { GoBack }
+};
 </script>

@@ -35,44 +35,47 @@ import {
   QItemTile,
   QTabs,
   QRouteTab
-} from 'quasar'
-import axios from 'axios'
-import menu from '../layouts/menu'
+} from "quasar";
+import axios from "axios";
+import menu from "../layouts/menu";
 
 export default {
-  data () {
+  data() {
     return {
       requests: []
-    }
+    };
   },
 
-  mounted () {
-    this.fetchRequests()
+  mounted() {
+    this.fetchRequests();
   },
 
   methods: {
-    fetchRequests () {
-      axios.get('requests')
-        .then((response) => {
-          this.requests = response.data
-        }, () => {
-          Toast.create.negative('Fallo al recuperar lista de amigos')
-        })
+    fetchRequests() {
+      axios.get("requests").then(
+        response => {
+          this.requests = response.data;
+        },
+        () => {
+          Toast.create.negative("Fallo al recuperar lista de amigos");
+        }
+      );
     },
-    confirmRequest () {
-      axios.post('requests', {'userdes': event.target.parentElement.id})
-        .then((response) => {
-          Toast.create.positive('Solicitud de amistad aceptada')
-          this.fetchRequests()
-        }, () => {
-          Toast.create.negative('Something went wrong!')
-        })
+    confirmRequest() {
+      axios.post("requests", { userdes: event.target.parentElement.id }).then(
+        response => {
+          Toast.create.positive("Solicitud de amistad aceptada");
+          this.fetchRequests();
+        },
+        () => {
+          Toast.create.negative("Something went wrong!");
+        }
+      );
     }
-
   },
 
   components: {
-    'q-menu': menu,
+    "q-menu": menu,
     QList,
     QItem,
     QItemMain,
@@ -81,5 +84,5 @@ export default {
     QTabs,
     QRouteTab
   }
-}
+};
 </script>

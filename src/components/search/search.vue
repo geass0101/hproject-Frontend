@@ -23,28 +23,52 @@
 </template>
 
 <script>
-import { Toast, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QSearch, QItem, QList } from 'quasar'
-import axios from 'axios'
-import menu from '../layouts/menu'
+import {
+  Toast,
+  QBtn,
+  QToolbar,
+  QIcon,
+  QToolbarTitle,
+  QField,
+  QInput,
+  QSearch,
+  QItem,
+  QList
+} from "quasar";
+import axios from "axios";
+import menu from "../layouts/menu";
 
-export default{
-  data () {
+export default {
+  data() {
     return {
-      srch: '',
-      results: [],
-    }
+      srch: "",
+      results: []
+    };
   },
 
   methods: {
-    search () {
-      axios.post('search', {name: this.srch})
-        .then((response) => {
-          this.results = response.data.users
-        }, () => {
-          Toast.create.negative('Fallo al listar usuarios')
-        })
+    search() {
+      axios.post("search", { name: this.srch }).then(
+        response => {
+          this.results = response.data.users;
+        },
+        () => {
+          Toast.create.negative("Fallo al listar usuarios");
+        }
+      );
     }
   },
-  components: { 'q-menu': menu, QBtn, QToolbar, QIcon, QToolbarTitle, QField, QInput, QSearch, QItem, QList }
-}
+  components: {
+    "q-menu": menu,
+    QBtn,
+    QToolbar,
+    QIcon,
+    QToolbarTitle,
+    QField,
+    QInput,
+    QSearch,
+    QItem,
+    QList
+  }
+};
 </script>
