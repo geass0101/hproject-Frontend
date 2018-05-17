@@ -36,40 +36,40 @@ import {
   QCardMain,
   QCardSeparator,
   QPullToRefresh
-} from "quasar";
-import axios from "axios";
-import menu from "../layouts/menu";
+} from 'quasar'
+import axios from 'axios'
+import menu from '../layouts/menu'
 
 export default {
-  data() {
+  data () {
     return {
       posts: []
-    };
+    }
   },
 
-  mounted() {
+  mounted () {
     this.fetchPosts();
   },
 
   methods: {
-    fetchPosts() {
-      axios.get("posts").then(
+    fetchPosts () {
+      axios.get('posts').then(
         response => {
-          this.posts = response.data;
+          this.posts = response.data
         },
         () => {
-          Toast.create.negative("Fallo al recuperar posts");
+          Toast.create.negative('Fallo al recuperar posts')
         }
       );
     },
     refreshPosts(done) {
-      this.fetchPosts();
-      done();
+      this.fetchPosts()
+      done()
     }
   },
 
   components: {
-    "q-menu": menu,
+    'q-menu': menu,
     QBtn,
     QToolbar,
     QIcon,
@@ -82,5 +82,5 @@ export default {
     QCardSeparator,
     QPullToRefresh
   }
-};
+}
 </script>

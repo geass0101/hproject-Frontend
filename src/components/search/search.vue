@@ -34,32 +34,32 @@ import {
   QSearch,
   QItem,
   QList
-} from "quasar";
-import axios from "axios";
-import menu from "../layouts/menu";
+} from 'quasar'
+import axios from 'axios'
+import menu from '../layouts/menu'
 
 export default {
-  data() {
+  data () {
     return {
-      srch: "",
+      srch: '',
       results: []
-    };
+    }
   },
 
   methods: {
-    search() {
-      axios.post("search", { name: this.srch }).then(
+    search () {
+      axios.post('search', { name: this.srch }).then(
         response => {
-          this.results = response.data.users;
+          this.results = response.data.users
         },
         () => {
-          Toast.create.negative("Fallo al listar usuarios");
+          Toast.create.negative('Fallo al listar usuarios')
         }
-      );
+      )
     }
   },
   components: {
-    "q-menu": menu,
+    'q-menu': menu,
     QBtn,
     QToolbar,
     QIcon,
@@ -70,5 +70,5 @@ export default {
     QItem,
     QList
   }
-};
+}
 </script>

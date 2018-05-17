@@ -40,33 +40,33 @@ import {
   QCardSeparator,
   QPullToRefresh,
   QOptionGroup
-} from "quasar";
-import axios from "axios";
-import menu from "../layouts/menu";
+} from 'quasar'
+import axios from 'axios'
+import menu from '../layouts/menu'
 
 export default {
-  data() {
+  data () {
     return {
-      body: "",
-      type: ""
-    };
+      body: '',
+      type: ''
+    }
   },
 
   methods: {
-    create() {
-      axios.post("create", { body: this.body, type: this.type }).then(
+    create () {
+      axios.post('create', { body: this.body, type: this.type }).then(
         response => {
-          Toast.create.positive("Post creado");
+          Toast.create.positive('Post creado')
         },
         () => {
-          Toast.create.negative("Fallo al crear post");
+          Toast.create.negative('Fallo al crear post')
         }
-      );
+      )
     }
   },
 
   components: {
-    "q-menu": menu,
+    'q-menu': menu,
     QBtn,
     QToolbar,
     QIcon,
@@ -80,5 +80,5 @@ export default {
     QPullToRefresh,
     QOptionGroup
   }
-};
+}
 </script>

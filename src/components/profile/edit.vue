@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div class="layout-view">
-      <div class="text-center">
+    <div class='layout-view'>
+      <div class='text-center'>
         <h3>Edición de Perfil</h3>
       </div>
-      <div class="layout-view layout-padding">
-        <q-input v-model="user.name" stack-label="Nombre público" />
-        <q-input v-model="user.profile" stack-label="Descripcion de perfil" />
-        <q-input v-model="user.city" stack-label="Ciudad" />
-        <q-input v-model="user.country" stack-label="País" />
-        <q-input v-model="user.instrument" stack-label="Instrumentos" />
-        <q-input v-model="user.genere" stack-label="Géneros" />
-        <q-btn color="secondary" class="on-right" @click="editProfile">Realizar Cambios</q-btn>
+      <div class='layout-view layout-padding'>
+        <q-input v-model='user.name' stack-label='Nombre público' />
+        <q-input v-model='user.profile' stack-label='Descripcion de perfil' />
+        <q-input v-model='user.city' stack-label='Ciudad' />
+        <q-input v-model='user.country' stack-label='País' />
+        <q-input v-model='user.instrument' stack-label='Instrumentos' />
+        <q-input v-model='user.genere' stack-label='Géneros' />
+        <q-btn color='secondary' class='on-right' @click='editProfile'>Realizar Cambios</q-btn>
 
       </div>
     </div>
@@ -27,71 +27,77 @@ import {
   QToolbarTitle,
   QField,
   QInput
-} from "quasar";
-import axios from "axios";
-import menu from "../layouts/menu";
+} from 'quasar'
+import axios from 'axios'
+import menu from '../layouts/menu'
 
 export default {
-  data() {
+  data () {
     return {
       user: {}
-    };
+    }
   },
 
-  mounted() {
-    this.fetchProfile(), this.setLocation();
+  mounted () {
+    this.fetchProfile()
+    this.setLocation()
   },
 
   methods: {
     fetchProfile() {
-      axios.get("profile").then(
+      axios.get('profile').then(
         response => {
           this.user = response.data.users[0];
         },
         () => {
-          Toast.create.negative("Fallo al recuperar el perfil");
+          Toast.create.negative('Fallo al recuperar el perfil');
         }
       );
     },
     editProfile() {
       axios
-        .post("profile", {
+        .post('profile', {
           name: this.user.name,
           profile: this.user.profile,
           city: this.user.city
         })
         .then(
           () => {
-            Toast.create.positive("Perfil actualizado");
+            Toast.create.positive('Perfil actualizado');
           },
           () => {
-            Toast.create.negative("Fallo al actualizar el perfil");
+            Toast.create.negative('Fallo al actualizar el perfil');
           }
-        );
+        )
     },
     setLocation() {
-      if (navigation.geolocation) {
+      if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-          axios
-            .post("location", {
+          this.sendLocation
+        )
+      } else {
+        Toast.create.negative('Fallo al coger posicion geográfica');
+      }
+    },
+    sendLocation(position){
+      axios
+            .post('location', {
               lat: position.coords.latitude,
               long: position.coords.longitude
             })
             .then(
               () => {
-                Toast.create.positive("Tomada geolocalización");
+                Toast.create.positive('Tomada geolocalización');
               },
               () => {
-                Toast.create.negative("Fallo al detectar posicion geográfica");
+                Toast.create.negative('Fallo al detectar posicion geográfica');
               }
             )
-        );
-      }
     }
   },
 
   components: {
-    "q-menu": menu,
+    'q-menu': menu,
     QBtn,
     QToolbar,
     QIcon,

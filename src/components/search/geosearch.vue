@@ -34,56 +34,35 @@ import {
   QSearch,
   QItem,
   QList
-} from "quasar";
-import axios from "axios";
-import menu from "../layouts/menu";
+} from 'quasar'
+import axios from 'axios'
+import menu from '../layouts/menu'
 
 export default {
-  data() {
+  data () {
     return {
-      srch: "",
+      srch: '',
       results: [],
       options: [],
       selectOptions: []
-    };
+    }
   },
 
   methods: {
-    getInst() {
-      axios.get("inst").then(
+    getInst () {
+      axios.get('inst').then(
         response => {
-          this.options = response.data.users;
+          this.options = response.data.users
         },
         () => {
-          Toast.create.negative("Fallo al recuperar lista de instrumentos");
+          Toast.create.negative('Fallo al recuperar lista de instrumentos')
         }
-      );
-    },
-    search() {
-      if (navigation.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          axios
-            .post("geosearch", {
-              lat: position.coords.latitude,
-              long: position.coords.longitude,
-              inst: ""
-            })
-            .then(
-              response => {
-                this.results = response.data.users;
-              },
-              () => {
-                Toast.create.negative("Fallo al listar usuarios");
-              }
-            )
-        );
-      } else {
-        Toast.create.negative("No se ha podido conseguir tu posición actual");
-      }
+      )
     }
+
   },
   components: {
-    "q-menu": menu,
+    'q-menu': menu,
     QBtn,
     QToolbar,
     QIcon,
@@ -94,5 +73,5 @@ export default {
     QItem,
     QList
   }
-};
+}
 </script>
